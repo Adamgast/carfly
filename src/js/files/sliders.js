@@ -133,10 +133,7 @@ function initSliders() {
 				slidesPerView: 'auto',
 				//Вкл паралакс
 				//parallax: true,
-				effect: 'fade',
-				fadeEffect: {
-					crossFade: true
-				},
+
 				keyboard: {
 					//Вкл/выкл
 					enabled: true,
@@ -232,7 +229,6 @@ function initSliders() {
 				if (document.querySelector('.wrapper').classList.contains('_free')) {
 					document.querySelector('.wrapper').classList.remove('_free');
 					pageSlider.params.freeMode.enabled = false;
-					pageSlider.params.freeMode.sticky = false;
 				}
 				for (let index = 0; index < pageSlider.slides.length; index++) {
 					const pageSlide = pageSlider.slides[index];
@@ -242,7 +238,6 @@ function initSliders() {
 						if (pageSlideContentHeight > window.innerHeight) {
 							document.querySelector('.wrapper').classList.add('_free');
 							pageSlider.params.freeMode.enabled = true;
-							pageSlider.params.freeMode.sticky = true;
 							break;
 						}
 					}
