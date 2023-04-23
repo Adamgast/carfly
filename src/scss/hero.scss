@@ -63,7 +63,7 @@
 		transform: translateY(100%);
 		&._watcher-view,
 		._watcher-view & {
-			transition: transform 0.8s ease 0.7s, opacity 0.8s ease 0.7, box-shadow 0.3s ease 0s;
+			transition: transform 0.8s ease 0.7s, opacity 0.8s ease 0.7s, box-shadow 0.3s ease 0s;
 			transform: translateY(0px);
 			opacity: 1;
 		}
@@ -118,7 +118,7 @@
 
 	@keyframes imgAnim {
 		0% {
-			transform: transformY(-3deg);
+			transform: rotate(-3deg);
 		}
 		100% {
 			transform: rotate(3deg);
