@@ -7,14 +7,16 @@
 	<meta name="author" content="">
 	<style>
 		body {
+			background: rgb(1, 11, 38) url("../img/loader.gif") center/ 250px no-repeat;
 			opacity: 0;
 			visibility: hidden;
-			transition: all 0.3s ease-in-out;
+			transition: all 0.5s ease-in-out;
 		}
 
 		.loaded body {
 			opacity: 1;
 			visibility: visible;
+			background-image: none
 		}
 	</style>
 	<link rel="stylesheet" href="css/style.min.css">
