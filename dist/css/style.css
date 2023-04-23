@@ -529,11 +529,11 @@ h6 {
 
 .hero__button._watcher-view,
 ._watcher-view .hero__button {
-  -webkit-transition: opacity 0.8s ease 0.7, -webkit-transform 0.8s ease 0.7s, -webkit-box-shadow 0.3s ease 0s;
-  transition: opacity 0.8s ease 0.7, -webkit-transform 0.8s ease 0.7s, -webkit-box-shadow 0.3s ease 0s;
-  -o-transition: transform 0.8s ease 0.7s, opacity 0.8s ease 0.7, box-shadow 0.3s ease 0s;
-  transition: transform 0.8s ease 0.7s, opacity 0.8s ease 0.7, box-shadow 0.3s ease 0s;
-  transition: transform 0.8s ease 0.7s, opacity 0.8s ease 0.7, box-shadow 0.3s ease 0s, -webkit-transform 0.8s ease 0.7s, -webkit-box-shadow 0.3s ease 0s;
+  -webkit-transition: opacity 0.8s ease 0.7s, -webkit-transform 0.8s ease 0.7s, -webkit-box-shadow 0.3s ease 0s;
+  transition: opacity 0.8s ease 0.7s, -webkit-transform 0.8s ease 0.7s, -webkit-box-shadow 0.3s ease 0s;
+  -o-transition: transform 0.8s ease 0.7s, opacity 0.8s ease 0.7s, box-shadow 0.3s ease 0s;
+  transition: transform 0.8s ease 0.7s, opacity 0.8s ease 0.7s, box-shadow 0.3s ease 0s;
+  transition: transform 0.8s ease 0.7s, opacity 0.8s ease 0.7s, box-shadow 0.3s ease 0s, -webkit-transform 0.8s ease 0.7s, -webkit-box-shadow 0.3s ease 0s;
   -webkit-transform: translateY(0px);
       -ms-transform: translateY(0px);
           transform: translateY(0px);
@@ -589,8 +589,8 @@ h6 {
 
 @-webkit-keyframes imgAnim {
   0% {
-    -webkit-transform: transformY(-3deg);
-            transform: transformY(-3deg);
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
   }
 
   100% {
@@ -601,8 +601,8 @@ h6 {
 
 @keyframes imgAnim {
   0% {
-    -webkit-transform: transformY(-3deg);
-            transform: transformY(-3deg);
+    -webkit-transform: rotate(-3deg);
+            transform: rotate(-3deg);
   }
 
   100% {
