@@ -10,17 +10,19 @@
 	<meta name="author" content="">
 	<style>
 		body {
+			background: rgb(1, 11, 38) url("img/loader.gif") center/ 250px no-repeat;
 			opacity: 0;
 			visibility: hidden;
-			transition: all 0.3s ease-in-out;
+			transition: all 0.5s ease-in-out;
 		}
 
 		.loaded body {
 			opacity: 1;
 			visibility: visible;
+			background-image: none
 		}
 	</style>
-	<link rel="stylesheet" href="css/style.min.css?_v=20230423113143">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230423115559">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -351,7 +353,9 @@
 								</div>
 							</div>
 						</div>
-						<div data-watch id="map" class="contact__map"></div>
+						<div data-watch id="map" class="contact__map">
+							<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8ba5e2a8fc09a6b7ed74fb7c55defcc1df640975d4639a01f1aa3dd511f044a0&amp;source=constructor" width="100%" height="100%" loading="lazy" frameborder="0"></iframe>
+						</div>
 					</div>
 					<div class="contact__bg bg">
 						<picture><source srcset="img/bg.webp" type="image/webp"><img src="img/bg.png" alt="" loading="lazy" class="bg__img"></picture>
@@ -362,8 +366,7 @@
 			<div class="page__scroll"></div>
 		</main>
 	</div>
-	<script src="https://api-maps.yandex.ru/2.1/?apikey=&lang=ru_RU&_v=20230423113143"></script>
-	<script src="js/app.min.js?_v=20230423113143"></script>
+	<script src="js/app.min.js?_v=20230423115559"></script>
 </body>
 
 </html>

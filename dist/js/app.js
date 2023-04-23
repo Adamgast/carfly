@@ -4335,12 +4335,6 @@
             }));
         }
     }), 0);
-    ymaps.ready((function() {
-        new ymaps.Map("map", {
-            center: [ 55.76, 37.64 ],
-            zoom: 7
-        });
-    }));
     window["FLS"] = false;
     isWebp();
     addLoadedClass();
