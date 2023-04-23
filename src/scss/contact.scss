@@ -1,0 +1,100 @@
+//========================================================================================================================================================
+.contact {
+	&__container {
+		overflow: hidden;
+		@media (min-width: $mobile) {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			column-gap: 30px;
+			row-gap: 20px;
+		}
+
+		@media (max-width: $mobileSmall) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__content {
+		width: 100%;
+		@media (min-width: $tablet) {
+			padding: 98px 0;
+		}
+		@media (min-width: $mobile) {
+			flex: 0 1 467px;
+		}
+	}
+
+	&__title {
+		@include adaptiveValue("margin-bottom", 40, 30);
+		opacity: 0;
+		transform: translateY(100%);
+		._watcher-view & {
+			transform: translateY(0px);
+			opacity: 1;
+			transition: all 0.8s ease 0.2s;
+		}
+	}
+
+	&__body {
+		&:not(:last-child) {
+			@include adaptiveValue("padding-bottom", 40, 20);
+			@include adaptiveValue("margin-bottom", 40, 20);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		}
+		opacity: 0;
+		transform: translateY(100%);
+		._watcher-view & {
+			transform: translateY(0px);
+			opacity: 1;
+			transition: all 0.8s ease 0.3s;
+		}
+	}
+
+	&__sub-title {
+		line-height: 1.2;
+		font-weight: 700;
+		@include adaptiveValue("font-size", 24, 18);
+		@include adaptiveValue("margin-bottom", 25, 10);
+	}
+
+	&__links {
+	}
+
+	&__link {
+		display: block;
+		@include adaptiveValue("font-size", 18, 14);
+		line-height: 1.2;
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 15, 10);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__map {
+		background-color: #ff01f1;
+		@media (min-width: $mobile) {
+			flex: 0 1 832px;
+			padding-bottom: 48.2%;
+		}
+		@media (max-width: $mobile) {
+			height: 440px;
+			margin-top: 20px;
+		}
+		opacity: 0;
+		transform: translateX(100%);
+		&._watcher-view {
+			transform: translateX(0px);
+			opacity: 1;
+			transition: all 0.8s ease 0.3s;
+		}
+	}
+
+	&__bg {
+	}
+}
+//========================================================================================================================================================

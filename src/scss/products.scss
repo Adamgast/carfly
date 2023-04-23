@@ -1,0 +1,143 @@
+//PRODUCTS START=====================================================================================
+.products {
+	&__container {
+		overflow: hidden;
+	}
+
+	&__title {
+		@include adaptiveValue("margin-bottom", 40, 30);
+		opacity: 0;
+		transform: translateY(100%);
+		&._watcher-view {
+			transform: translateY(0px);
+			opacity: 1;
+			transition: all 0.8s ease 0.2s;
+		}
+	}
+
+	&__list {
+		display: grid;
+		grid-row-gap: 10px;
+		grid-column-gap: 30px;
+		@media (min-width: $pc) {
+			grid-template-columns: repeat(12, 1fr);
+		}
+		@media (max-width: $pc) {
+			grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+		}
+	}
+
+	&__item {
+		min-height: 50px;
+		@media (min-width: $pc) {
+			grid-column: 12 span;
+		}
+		opacity: 0;
+		transform: translateY(100%);
+		._watcher-view & {
+			opacity: 1;
+			transition: all 0.8s ease 0.4s;
+			transform: translateY(0%);
+		}
+	}
+
+	&__product {
+	}
+
+	&__bg {
+	}
+}
+
+.product {
+	background-color: #0b1c47;
+	border-radius: 5px;
+	display: flex;
+	overflow: hidden;
+	height: 100%;
+	@media (min-width: $pc) {
+		padding: 30px 100px 30px 40px;
+		align-items: center;
+		column-gap: 30px;
+	}
+	@media (max-width: $pc) {
+		min-width: 290px;
+		flex-direction: column;
+		padding: 20px;
+	}
+	box-shadow: 0px 0px 0px rgba(11, 28, 71, 0.555);
+	transition: box-shadow 0.3s ease 0s;
+	@media (any-hover: hover) {
+		&:hover {
+			box-shadow: -2px 5px 20px 0px rgba(255, 237, 211, 0.3);
+		}
+	}
+	&__image {
+		position: relative;
+		@media (min-width: $pc) {
+			flex: 0 0 215px;
+			height: 129px;
+		}
+		@media (max-width: $pc) {
+			height: 110px;
+			width: 182px;
+			align-self: center;
+			margin-bottom: 20px;
+		}
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+		}
+	}
+
+	&__content {
+		max-width: 555px;
+		flex: 1 1 auto;
+		@media (max-width: $pc) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__sub-title {
+		font-size: 22px;
+		line-height: math.div(27, 22);
+		font-weight: 700;
+		margin-bottom: 10px;
+		@media (max-width: $pc) {
+			font-size: 18px;
+		}
+	}
+
+	&__text {
+		font-weight: 300;
+		line-height: math.div(17, 14);
+	}
+
+	&__cost {
+		white-space: nowrap;
+		font-weight: 700;
+		font-size: 30px;
+		line-height: math.div(37, 30);
+		@media (min-width: $pc) {
+			margin: 0 40px;
+		}
+		@media (max-width: $pc) {
+			margin-bottom: 20px;
+			font-size: 20px;
+		}
+	}
+
+	&__button {
+		@media (min-width: $pc) {
+			max-width: 240px;
+		}
+		@media (max-width: $pc) {
+			min-height: 50px;
+			padding: 13px 20px;
+		}
+	}
+}
+//PRODUCTS END=====================================================================================

@@ -1,0 +1,88 @@
+//========================================================================================================================================================
+.page {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__screen {
+		@media (min-width: $mobile) {
+			flex: 1 0 100%;
+		}
+		position: relative;
+		& [class*="__container"] {
+			@include adaptiveValue("padding-top", 299, 120);
+			@include adaptiveValue("padding-bottom", 90, 0);
+		}
+	}
+
+	&__pagination {
+		position: absolute;
+		z-index: 2;
+		top: 50%;
+		right: 50px;
+		transform: translate(50px, -50px);
+		opacity: 0;
+		visibility: hidden;
+		display: flex;
+		flex-direction: column;
+		.loaded & {
+			transition: all 0.5s ease 0.7s;
+			transform: translate(0px, -50px);
+			opacity: 1;
+			visibility: visible;
+		}
+		._free & {
+			transition: all 0.3s ease 0s;
+			transform: translate(50px, -50px);
+			opacity: 0;
+		}
+	}
+
+	&__bullet {
+		width: 15px;
+		height: 15px;
+		cursor: pointer;
+		background-color: rgba(0, 0, 0, 0.5);
+		margin: 10px 0;
+		border-radius: 50%;
+		transition: background-color 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: rgba(153, 2, 120, 0.6);
+			}
+		}
+	}
+
+	&__bullet_active {
+		background-color: rgb(153, 2, 120);
+	}
+
+	&__scroll {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 8px;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.3);
+	}
+
+	&__drag-scroll {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		border-radius: 5px;
+		background-color: rgba(153, 2, 120, 0.8);
+		cursor: pointer;
+	}
+}
+//========================================================================================================================================================
