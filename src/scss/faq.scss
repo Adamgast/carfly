@@ -20,12 +20,13 @@
 }
 
 .spollers-faq {
-	display: grid;
-	gap: 10px;
 	&__item {
 		border-radius: rem(5);
 		box-shadow: 0px 0px 0px rgba(11, 28, 71, 0.555);
 		transition: box-shadow 0.3s ease 0s;
+		&:not(:last-child) {
+			margin-bottom: rem(10);
+		}
 		&:focus {
 			box-shadow: -2px 5px 20px 0px rgba(255, 237, 211, 0.3);
 		}
