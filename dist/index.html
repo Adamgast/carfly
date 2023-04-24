@@ -22,7 +22,7 @@
 			background-image: none
 		}
 	</style>
-	<link rel="stylesheet" href="css/style.min.css?_v=20230424165534">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230424170602">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -381,8 +381,7 @@
 			myMap.controls.remove('searchControl'); // удаляем поиск
 			myMap.controls.remove('trafficControl'); // удаляем контроль трафика
 			myMap.controls.remove('typeSelector'); // удаляем тип
-			myMap.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
-
+			myMap.controls.remove('rulerControl'); // удаляем контрол правил
 			myMap.behaviors.disable('scrollZoom');
 			const centralPlacemark = new ymaps.Placemark(
 				[55.76, 37.64], {
@@ -413,7 +412,7 @@
 			myMap.geoObjects.add(servicePlacemark);
 		}
 	</script>
-	<script src="js/app.min.js?_v=20230424165534"></script>
+	<script src="js/app.min.js?_v=20230424170602"></script>
 </body>
 
 </html>
