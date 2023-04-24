@@ -77,10 +77,14 @@
 
 	&__map {
 		background-color: #ff01f1;
-		position: relative;
+		overflow: hidden;
+
+		@media (min-width: $tablet) {
+			height: 691px;
+		}
 		@media (min-width: $mobile) {
-			flex: 0 1 832px;
-			padding-bottom: 48.2%;
+			width: 832px;
+			height: 500px;
 		}
 		@media (max-width: $mobile) {
 			height: 440px;

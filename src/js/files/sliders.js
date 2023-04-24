@@ -43,8 +43,8 @@ function initSliders() {
 						slidesPerView: 2,
 						spaceBetween: 20,
 						autoHeight: true,
-						//speed: 300,
-						rewind: true,
+						speed: 300,
+						//rewind: true,
 						//touchRatio: 0,
 						//simulateTouch: false,
 						loop: true,
@@ -116,138 +116,6 @@ function initSliders() {
 			});
 		}
 		destroySlider();
-
-		function pageSlider() {
-			let pageSlider = new Swiper('.page', {
-				// Подключаем модули слайдера
-				// для конкретного случая
-				modules: [Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, FreeMode],
-
-				//Свои классы
-				wrapperClass: "page__wrapper",
-				slideClass: "page__screen",
-
-				//Вертикальный слайдер
-				direction: 'vertical',
-				//Кол-во слайдов для показа
-				slidesPerView: 'auto',
-				//Вкл паралакс
-				//parallax: true,
-
-				keyboard: {
-					//Вкл/выкл
-					enabled: true,
-					//Вкл/выкл только когда слайдер в пределах вьюпорта
-					onlyInViewport: true,
-					//Вкл/выкл управления клавишами pageUp, pageDown
-					pageUpDown: true,
-				},
-
-				//Управление колесом мыши
-				mousewheel: {
-					//Чувствительность колеса мыши
-					sensitivity: 1,
-					//Класс обЪекта на котором будет срабатывать прокрутка мыши
-					//eventsTarget:".image-slider"
-				},
-
-				//Отключаем функционал если слайдов меньше чем нужно
-				watchOverflow: true,
-				speed: 500,
-				//rewind: true,
-				//Обновить слайдер
-				//при изменеии элементов слайдера
-				observer: true,
-				//при изменеии родительских элементов слайдера
-				observeParents: true,
-				//при изменеии дочерних элементов слайдера
-				observeSlideChildren: true,
-
-				//Навигация 
-				//Буллеты, текущее положение, прогрессбар
-				pagination: {
-					el: '.page__pagination',
-					type: 'bullets',
-					clickable: true,
-					bulletClass: "page__bullet",
-					bulletActiveClass: "page__bullet_active",
-				},
-				//Скролл
-				scrollbar: {
-					el: '.page__scroll',
-					dragClass: 'page__drag-scroll',
-					//Возможность перетаскивать скролл
-					draggable: true,
-				},
-				init: false,
-				// События
-				on: {
-					//СИнициализация слайдера
-					init: function () {
-						menuSlider();
-						setScrollType();
-					},
-					//Смена слайда
-					slideChange: function () {
-						menuSliderRemove();
-						menuLinks[pageSlider.realIndex].classList.add('_nav-active');
-					},
-					resize: function () {
-						setScrollType();
-					},
-				},
-			});
-
-			let menuLinks = document.querySelectorAll('.menu__link');
-			function menuSlider() {
-				if (menuLinks.length > 0) {
-					menuLinks[pageSlider.realIndex].classList.add('_nav-active');
-					for (let index = 0; index < menuLinks.length; index++) {
-						const menuLink = menuLinks[index];
-						menuLink.addEventListener("click", function (e) {
-							// Закрываем меню, если оно открыто
-							if (document.documentElement.classList.contains("menu-open")) {
-								document.documentElement.classList.remove("menu-open");
-								document.documentElement.classList.remove("lock");
-							};
-							menuSliderRemove()
-							pageSlider.slideTo(index, 500);
-							menuLink.classList.add('_nav-active');
-							e.preventDefault();
-						});
-					}
-				}
-			}
-			function menuSliderRemove() {
-				let menuLinkActive = document.querySelector('.menu__link._nav-active');
-				if (menuLinkActive) {
-					menuLinkActive.classList.remove('_nav-active');
-				}
-			}
-
-			function setScrollType() {
-				if (document.querySelector('.wrapper').classList.contains('_free')) {
-					document.querySelector('.wrapper').classList.remove('_free');
-					pageSlider.params.freeMode.enabled = false;
-				}
-				for (let index = 0; index < pageSlider.slides.length; index++) {
-					const pageSlide = pageSlider.slides[index];
-					const pageSlideContent = pageSlide.querySelector('.screen-content');
-					if (pageSlideContent) {
-						const pageSlideContentHeight = pageSlideContent.offsetHeight;
-						if (pageSlideContentHeight > window.innerHeight) {
-							document.querySelector('.wrapper').classList.add('_free');
-							pageSlider.params.freeMode.enabled = true;
-							break;
-						}
-					}
-				}
-			}
-
-			//Инициализация Слайдера
-			pageSlider.init();
-		}
-		pageSlider();
 	}
 }
 // Скролл на базе слайдера (по классу swiper_scroll для оболочки слайдера)
@@ -279,9 +147,144 @@ function initSlidersScroll() {
 	}
 }
 
+// Слайдер на всю страницу
+function pageSlider() {
+	let pageSlider = new Swiper('.page', {
+		// Подключаем модули слайдера
+		// для конкретного случая
+		modules: [Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, FreeMode],
+		//Свои классы
+		wrapperClass: "page__wrapper",
+		slideClass: "page__screen",
+		simulateTouch: false,
+		//Вертикальный слайдер
+		direction: 'vertical',
+		//Кол-во слайдов для показа
+		slidesPerView: 'auto',
+		//Вкл паралакс
+		//parallax: true,
+
+		keyboard: {
+			//Вкл/выкл
+			enabled: true,
+			//Вкл/выкл только когда слайдер в пределах вьюпорта
+			onlyInViewport: true,
+			//Вкл/выкл управления клавишами pageUp, pageDown
+			pageUpDown: true,
+		},
+
+		//Управление колесом мыши
+		mousewheel: {
+			//Чувствительность колеса мыши
+			sensitivity: 1,
+			//Класс обЪекта на котором будет срабатывать прокрутка мыши
+			//eventsTarget:".image-slider"
+		},
+
+		//Отключаем функционал если слайдов меньше чем нужно
+		watchOverflow: true,
+		speed: 500,
+		//rewind: true,
+		//Обновить слайдер
+		//при изменеии элементов слайдера
+		observer: true,
+		//при изменеии родительских элементов слайдера
+		observeParents: true,
+		//при изменеии дочерних элементов слайдера
+		observeSlideChildren: true,
+
+		//Навигация 
+		//Буллеты, текущее положение, прогрессбар
+		pagination: {
+			el: '.page__pagination',
+			type: 'bullets',
+			clickable: true,
+			bulletClass: "page__bullet",
+			bulletActiveClass: "page__bullet_active",
+		},
+		//Скролл
+		scrollbar: {
+			el: '.page__scroll',
+			dragClass: 'page__drag-scroll',
+			//Возможность перетаскивать скролл
+			draggable: true,
+		},
+		init: false,
+		// События
+
+		on: {
+			//СИнициализация слайдера
+			init: function () {
+				menuSlider();
+				setScrollType();
+			},
+			//Смена слайда
+			slideChange: function () {
+				menuSliderRemove();
+				menuLinks[pageSlider.realIndex].classList.add('_nav-active');
+			},
+			resize: function () {
+				setScrollType();
+			},
+		},
+	});
+
+	let menuLinks = document.querySelectorAll('.menu__link');
+	function menuSlider() {
+		if (menuLinks.length > 0) {
+			menuLinks[pageSlider.realIndex].classList.add('_nav-active');
+			for (let index = 0; index < menuLinks.length; index++) {
+				const menuLink = menuLinks[index];
+				menuLink.addEventListener("click", function (e) {
+					// Закрываем меню, если оно открыто
+					if (document.documentElement.classList.contains("menu-open")) {
+						document.documentElement.classList.remove("menu-open");
+						document.documentElement.classList.remove("lock");
+					};
+					menuSliderRemove()
+					pageSlider.slideTo(index, 500);
+					menuLink.classList.add('_nav-active');
+					e.preventDefault();
+				});
+			}
+		}
+	}
+	function menuSliderRemove() {
+		let menuLinkActive = document.querySelector('.menu__link._nav-active');
+		if (menuLinkActive) {
+			menuLinkActive.classList.remove('_nav-active');
+		}
+	}
+
+	function setScrollType() {
+		if (document.querySelector('.wrapper').classList.contains('_free')) {
+			document.querySelector('.wrapper').classList.remove('_free');
+			pageSlider.params.freeMode.enabled = false;
+		}
+		for (let index = 0; index < pageSlider.slides.length; index++) {
+			const pageSlide = pageSlider.slides[index];
+			const pageSlideContent = pageSlide.querySelector('.screen-content');
+			if (pageSlideContent) {
+				const pageSlideContentHeight = pageSlideContent.offsetHeight;
+				if (pageSlideContentHeight > window.innerHeight) {
+					document.querySelector('.wrapper').classList.add('_free');
+					pageSlider.params.freeMode.enabled = true;
+					break;
+				}
+			}
+		}
+	}
+	//Инициализация Слайдера
+	pageSlider.init();
+}
+
+
 window.addEventListener("load", function (e) {
 	// Запуск инициализации слайдеров
 	initSliders();
+	// Запуск инициализации слайдера на всю страницу
+	pageSlider();
 	// Запуск инициализации скролла на базе слайдера (по классу swiper_scroll)
 	//initSlidersScroll();
 });
+

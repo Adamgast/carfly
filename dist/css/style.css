@@ -386,6 +386,9 @@ h6 {
   top: -100%;
   left: 0;
   z-index: 50;
+}
+
+._free .header {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -1465,7 +1468,7 @@ h6 {
 
 .contact__map {
   background-color: #ff01f1;
-  position: relative;
+  overflow: hidden;
   opacity: 0;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
@@ -1648,10 +1651,8 @@ h6 {
   }
 
   .contact__map {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 832px;
-            flex: 0 1 832px;
-    padding-bottom: 48.2%;
+    width: 832px;
+    height: 500px;
   }
 }
 
@@ -1719,6 +1720,10 @@ h6 {
 
   .contact__content {
     padding: 98px 0;
+  }
+
+  .contact__map {
+    height: 691px;
   }
 }
 

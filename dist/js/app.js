@@ -4111,7 +4111,7 @@
                             slidesPerView: 2,
                             spaceBetween: 20,
                             autoHeight: true,
-                            rewind: true,
+                            speed: 300,
                             loop: true,
                             navigation: {
                                 prevEl: ".wherebue__prev",
@@ -4132,101 +4132,102 @@
                 }));
             }
             destroySlider();
-            function pageSlider() {
-                let pageSlider = new core(".page", {
-                    modules: [ Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, freeMode ],
-                    wrapperClass: "page__wrapper",
-                    slideClass: "page__screen",
-                    direction: "vertical",
-                    slidesPerView: "auto",
-                    keyboard: {
-                        enabled: true,
-                        onlyInViewport: true,
-                        pageUpDown: true
-                    },
-                    mousewheel: {
-                        sensitivity: 1
-                    },
-                    watchOverflow: true,
-                    speed: 500,
-                    observer: true,
-                    observeParents: true,
-                    observeSlideChildren: true,
-                    pagination: {
-                        el: ".page__pagination",
-                        type: "bullets",
-                        clickable: true,
-                        bulletClass: "page__bullet",
-                        bulletActiveClass: "page__bullet_active"
-                    },
-                    scrollbar: {
-                        el: ".page__scroll",
-                        dragClass: "page__drag-scroll",
-                        draggable: true
-                    },
-                    init: false,
-                    on: {
-                        init: function() {
-                            menuSlider();
-                            setScrollType();
-                        },
-                        slideChange: function() {
-                            menuSliderRemove();
-                            menuLinks[pageSlider.realIndex].classList.add("_nav-active");
-                        },
-                        resize: function() {
-                            setScrollType();
-                        }
-                    }
-                });
-                let menuLinks = document.querySelectorAll(".menu__link");
-                function menuSlider() {
-                    if (menuLinks.length > 0) {
-                        menuLinks[pageSlider.realIndex].classList.add("_nav-active");
-                        for (let index = 0; index < menuLinks.length; index++) {
-                            const menuLink = menuLinks[index];
-                            menuLink.addEventListener("click", (function(e) {
-                                if (document.documentElement.classList.contains("menu-open")) {
-                                    document.documentElement.classList.remove("menu-open");
-                                    document.documentElement.classList.remove("lock");
-                                }
-                                menuSliderRemove();
-                                pageSlider.slideTo(index, 500);
-                                menuLink.classList.add("_nav-active");
-                                e.preventDefault();
-                            }));
-                        }
-                    }
-                }
-                function menuSliderRemove() {
-                    let menuLinkActive = document.querySelector(".menu__link._nav-active");
-                    if (menuLinkActive) menuLinkActive.classList.remove("_nav-active");
-                }
-                function setScrollType() {
-                    if (document.querySelector(".wrapper").classList.contains("_free")) {
-                        document.querySelector(".wrapper").classList.remove("_free");
-                        pageSlider.params.freeMode.enabled = false;
-                    }
-                    for (let index = 0; index < pageSlider.slides.length; index++) {
-                        const pageSlide = pageSlider.slides[index];
-                        const pageSlideContent = pageSlide.querySelector(".screen-content");
-                        if (pageSlideContent) {
-                            const pageSlideContentHeight = pageSlideContent.offsetHeight;
-                            if (pageSlideContentHeight > window.innerHeight) {
-                                document.querySelector(".wrapper").classList.add("_free");
-                                pageSlider.params.freeMode.enabled = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-                pageSlider.init();
-            }
-            pageSlider();
         }
+    }
+    function pageSlider() {
+        let pageSlider = new core(".page", {
+            modules: [ Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, freeMode ],
+            wrapperClass: "page__wrapper",
+            slideClass: "page__screen",
+            simulateTouch: false,
+            direction: "vertical",
+            slidesPerView: "auto",
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+                pageUpDown: true
+            },
+            mousewheel: {
+                sensitivity: 1
+            },
+            watchOverflow: true,
+            speed: 500,
+            observer: true,
+            observeParents: true,
+            observeSlideChildren: true,
+            pagination: {
+                el: ".page__pagination",
+                type: "bullets",
+                clickable: true,
+                bulletClass: "page__bullet",
+                bulletActiveClass: "page__bullet_active"
+            },
+            scrollbar: {
+                el: ".page__scroll",
+                dragClass: "page__drag-scroll",
+                draggable: true
+            },
+            init: false,
+            on: {
+                init: function() {
+                    menuSlider();
+                    setScrollType();
+                },
+                slideChange: function() {
+                    menuSliderRemove();
+                    menuLinks[pageSlider.realIndex].classList.add("_nav-active");
+                },
+                resize: function() {
+                    setScrollType();
+                }
+            }
+        });
+        let menuLinks = document.querySelectorAll(".menu__link");
+        function menuSlider() {
+            if (menuLinks.length > 0) {
+                menuLinks[pageSlider.realIndex].classList.add("_nav-active");
+                for (let index = 0; index < menuLinks.length; index++) {
+                    const menuLink = menuLinks[index];
+                    menuLink.addEventListener("click", (function(e) {
+                        if (document.documentElement.classList.contains("menu-open")) {
+                            document.documentElement.classList.remove("menu-open");
+                            document.documentElement.classList.remove("lock");
+                        }
+                        menuSliderRemove();
+                        pageSlider.slideTo(index, 500);
+                        menuLink.classList.add("_nav-active");
+                        e.preventDefault();
+                    }));
+                }
+            }
+        }
+        function menuSliderRemove() {
+            let menuLinkActive = document.querySelector(".menu__link._nav-active");
+            if (menuLinkActive) menuLinkActive.classList.remove("_nav-active");
+        }
+        function setScrollType() {
+            if (document.querySelector(".wrapper").classList.contains("_free")) {
+                document.querySelector(".wrapper").classList.remove("_free");
+                pageSlider.params.freeMode.enabled = false;
+            }
+            for (let index = 0; index < pageSlider.slides.length; index++) {
+                const pageSlide = pageSlider.slides[index];
+                const pageSlideContent = pageSlide.querySelector(".screen-content");
+                if (pageSlideContent) {
+                    const pageSlideContentHeight = pageSlideContent.offsetHeight;
+                    if (pageSlideContentHeight > window.innerHeight) {
+                        document.querySelector(".wrapper").classList.add("_free");
+                        pageSlider.params.freeMode.enabled = true;
+                        break;
+                    }
+                }
+            }
+        }
+        pageSlider.init();
     }
     window.addEventListener("load", (function(e) {
         initSliders();
+        pageSlider();
     }));
     class ScrollWatcher {
         constructor(props) {
@@ -4331,6 +4332,33 @@
             }));
         }
     }), 0);
+    ymaps.ready((function() {
+        const myMap = new ymaps.Map("map", {
+            center: [ 55.76, 37.64 ],
+            zoom: 7
+        });
+        myMap.behaviors.disable("scrollZoom");
+        const centralPlacemark = new ymaps.Placemark([ 55.76, 37.64 ], {
+            hintContent: "Центральный офис",
+            balloonContent: "Время работы: Пн-Пт, с 9 до 20"
+        }, {
+            iconLayout: "default#image",
+            iconImageHref: "./img/contact/map-icon.svg",
+            iconImageSize: [ 36, 50 ],
+            iconImageOffset: [ -18, -25 ]
+        });
+        myMap.geoObjects.add(centralPlacemark);
+        var servicePlacemark = new ymaps.Placemark([ 55.35616623000242, 37.429322469480205 ], {
+            hintContent: "Сервисный центр",
+            balloonContent: "Время работы: Пн-Пт, с 9 до 20"
+        }, {
+            iconLayout: "default#image",
+            iconImageHref: "./img/contact/map-icon.svg",
+            iconImageSize: [ 36, 50 ],
+            iconImageOffset: [ -18, -25 ]
+        });
+        myMap.geoObjects.add(servicePlacemark);
+    }));
     window["FLS"] = false;
     isWebp();
     addLoadedClass();
