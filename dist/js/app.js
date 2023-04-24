@@ -4332,39 +4332,6 @@
             }));
         }
     }), 0);
-    ymaps.ready((function() {
-        const myMap = new ymaps.Map("map", {
-            center: [ 55.76, 37.64 ],
-            zoom: 7
-        });
-        myMap.controls.remove("geolocationControl");
-        myMap.controls.remove("searchControl");
-        myMap.controls.remove("trafficControl");
-        myMap.controls.remove("typeSelector");
-        myMap.controls.remove("fullscreenControl");
-        myMap.controls.remove("rulerControl");
-        myMap.behaviors.disable("scrollZoom");
-        const centralPlacemark = new ymaps.Placemark([ 55.76, 37.64 ], {
-            hintContent: "Центральный офис",
-            balloonContent: "Время работы: Пн-Пт, с 9 до 20"
-        }, {
-            iconLayout: "default#image",
-            iconImageHref: "./img/contact/map-icon.svg",
-            iconImageSize: [ 36, 50 ],
-            iconImageOffset: [ -18, -25 ]
-        });
-        myMap.geoObjects.add(centralPlacemark);
-        var servicePlacemark = new ymaps.Placemark([ 55.35616623000242, 37.429322469480205 ], {
-            hintContent: "Сервисный центр",
-            balloonContent: "Время работы: Пн-Пт, с 9 до 20"
-        }, {
-            iconLayout: "default#image",
-            iconImageHref: "./img/contact/map-icon.svg",
-            iconImageSize: [ 36, 50 ],
-            iconImageOffset: [ -18, -25 ]
-        });
-        myMap.geoObjects.add(servicePlacemark);
-    }));
     window["FLS"] = false;
     isWebp();
     addLoadedClass();
