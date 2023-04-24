@@ -4332,11 +4332,6 @@
             }));
         }
     }), 0);
-    setTimeout((function() {
-        let elem = document.createElement("script");
-        elem.src = "https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=getYaMap";
-        document.getElementsByTagName("body")[0].appendChild(elem);
-    }), 2e3);
     window["FLS"] = false;
     isWebp();
     addLoadedClass();

@@ -2,11 +2,6 @@
 import { isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { flsModules } from "./modules.js";
-setTimeout(function () {
-	let elem = document.createElement('script');
-	elem.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=getYaMap';
-	document.getElementsByTagName('body')[0].appendChild(elem);
-}, 2000);
 function getYaMap() {
 	const myMap = new ymaps.Map("map", {
 		center: [55.76, 37.64],
