@@ -4332,33 +4332,12 @@
             }));
         }
     }), 0);
-    ymaps.ready((function() {
-        const myMap = new ymaps.Map("map", {
-            center: [ 55.76, 37.64 ],
-            zoom: 7
-        });
-        myMap.behaviors.disable("scrollZoom");
-        const centralPlacemark = new ymaps.Placemark([ 55.76, 37.64 ], {
-            hintContent: "Центральный офис",
-            balloonContent: "Время работы: Пн-Пт, с 9 до 20"
-        }, {
-            iconLayout: "default#image",
-            iconImageHref: "./img/contact/map-icon.svg",
-            iconImageSize: [ 36, 50 ],
-            iconImageOffset: [ -18, -25 ]
-        });
-        myMap.geoObjects.add(centralPlacemark);
-        var servicePlacemark = new ymaps.Placemark([ 55.35616623000242, 37.429322469480205 ], {
-            hintContent: "Сервисный центр",
-            balloonContent: "Время работы: Пн-Пт, с 9 до 20"
-        }, {
-            iconLayout: "default#image",
-            iconImageHref: "./img/contact/map-icon.svg",
-            iconImageSize: [ 36, 50 ],
-            iconImageOffset: [ -18, -25 ]
-        });
-        myMap.geoObjects.add(servicePlacemark);
-    }));
+    setTimeout((function() {
+        var elem = document.createElement("script");
+        elem.type = "text/javascript";
+        elem.src = "https://api-maps.yandex.ru/2.1/?load=package.standard&lang=ru_RU&onload=getYaMap";
+        document.getElementsByTagName("body")[0].appendChild(elem);
+    }), 2e3);
     window["FLS"] = false;
     isWebp();
     addLoadedClass();
