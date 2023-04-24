@@ -1493,6 +1493,10 @@ h6 {
   left: 0;
 }
 
+[class*=gotoymaps] {
+  display: none !important;
+}
+
 .swiper {
   overflow: hidden;
 }
