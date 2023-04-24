@@ -2,7 +2,9 @@
 import { isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { flsModules } from "./modules.js";
-function getYaMap() {
+
+
+ymaps.ready(function () {
 	const myMap = new ymaps.Map("map", {
 		center: [55.76, 37.64],
 		zoom: 7,
@@ -33,4 +35,4 @@ function getYaMap() {
 			iconImageOffset: [-18, -25],
 		});
 	myMap.geoObjects.add(servicePlacemark);
-}
+});
